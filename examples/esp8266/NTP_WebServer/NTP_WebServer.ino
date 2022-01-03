@@ -23,6 +23,7 @@ const char* Appassword = "3tawi-GP";
 uint32_t lastTime;   
 int Tz = 1; // Time Zone
 String text;
+bool wifiok = false;
 
 void(* resetFunc) (void) = 0;//declare reset function at address 0
 
@@ -34,12 +35,14 @@ void getWifi() {
     delay(500);
     xc++;
   }
+    Serial.println("");
   if (WiFi.status() == WL_CONNECTED) { 
     Serial.print("CONNECTED To: ");
     Serial.println(ssid);
     Serial.print("IP Address: http://");
     Serial.println(WiFi.localIP().toString().c_str());
     WiFi.softAPdisconnect(true);
+    wifiok = true;
     } else { 
     WiFi.softAPConfig(ip, gatewayap, subnet);
     WiFi.softAP(Apssid, Appassword);
@@ -49,6 +52,7 @@ void getWifi() {
     Serial.println(Appassword);
     Serial.print("IP Address: http://");
     Serial.println(WiFi.softAPIP().toString().c_str());
+    wifiok = false;
     }
 }
   void handleRoot() {
@@ -56,6 +60,7 @@ void getWifi() {
 }
 void handlentpTime() {
     handleRoot();
+  if (wifiok) { 
     configTime(Tz * 3600, 0, "time.nist.gov", "pool.ntp.org"); 
     while(!time(nullptr)){
         Serial.print(".");
@@ -71,6 +76,7 @@ void handlentpTime() {
      int yr = p_tm->tm_year;
     rtc.setTime(s, m, h, dd, mo, yr);
     Serial.println("NTP Time Update ");
+    } else { Serial.println("NO WIFI "); }
 }
 void handlezoneTime() {
     handleRoot();
