@@ -65,7 +65,7 @@ void printLocalTime()
     Serial.println("Failed to obtain time");
     return;
   }
-    Serial.println("NTP Time Update ");
+    Serial.println("NTP Time Update");
 }
 void handlentpTime() {
   handleRoot();
@@ -78,13 +78,13 @@ void handlezoneTime() {
     handleRoot();
     Tz = server.arg("locatz").toInt(); 
     configTime(Tz * 3600, 0, "", "");
-    Serial.println("Zone Time Update ");
+    Serial.println("Zone Time Update");
 }
 void handlelocaltime() { 
     handleRoot();
     rtc.setTime(server.arg("locadt").toInt());  
     configTime(Tz * 3600, 0, "", "");
-    Serial.println("Local Time Update ");
+    Serial.println("Local Time Update");
 }
 void handleMyTime() { 
     handleRoot(); 
@@ -112,7 +112,7 @@ void handleMyTime() {
     text += dbuf[9];
     int dd = text.toInt();
     rtc.setTime(s, m, h, dd, mo, yr);
-    Serial.println("Manually Time Update ");
+    Serial.println("Manually Time Update");
 }
 void handlestate() {
   String content = "<?xml version = \"1.0\" ?>";
@@ -129,7 +129,7 @@ void handleRestesp() {
 }
 void setup() {
   Serial.begin(115200);
-  rtc.setTime(30, 58, 19, 1, 1, 2022);  // 1th Jan 2022 19:58:30
+  rtc.setTime(30, 58, 18, 3, 1, 2022);  // 3th Jan 2022 18:58:30
   //rtc.setTime(1610897079);  // 1st Jan 2022 00:00:00
   getWifi(); 
   server.on("/", handleRoot); 
