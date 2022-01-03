@@ -75,20 +75,20 @@ void handlentpTime() {
      int mo = p_tm->tm_mon;
      int yr = p_tm->tm_year;
     rtc.setTime(s, m, h, dd, mo, yr);
-    Serial.println("NTP Time Update ");
-    } else { Serial.println("NO WIFI "); }
+    Serial.println("NTP Time Update");
+    } else { Serial.println("NO WIFI"); }
 }
 void handlezoneTime() {
     handleRoot();
     Tz = server.arg("locatz").toInt(); 
     configTime(Tz * 3600, 0, "", "");
-    Serial.println("Zone Time Update ");
+    Serial.println("Zone Time Update");
 }
 void handlelocaltime() { 
     handleRoot();
     rtc.setTime(server.arg("locadt").toInt());  
     configTime(Tz * 3600, 0, "", "");
-    Serial.println("Local Time Update ");
+    Serial.println("Local Time Update");
 }
 void handleMyTime() { 
     handleRoot(); 
@@ -116,7 +116,7 @@ void handleMyTime() {
     text += dbuf[9];
     int dd = text.toInt();
     rtc.setTime(s, m, h, dd, mo, yr);
-    Serial.println("Manually Time Update ");
+    Serial.println("Manually Time Update");
 }
 void handlestate() {
   String content = "<?xml version = \"1.0\" ?>";
