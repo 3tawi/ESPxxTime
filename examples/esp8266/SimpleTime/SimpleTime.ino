@@ -1,6 +1,6 @@
 //  ESPxxTime Edited by 3tawi
 //  ESPxxTime Library: https://github.com/3tawi/ESPxxTime
-// Find All "Great Projects" Videos : https://www.youtube.com/c/GreatProjects
+//  Find All "Great Projects" Videos : https://www.youtube.com/c/GreatProjects
 
 #include <ESPxxTime.h>
 
