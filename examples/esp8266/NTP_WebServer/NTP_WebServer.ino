@@ -1,6 +1,6 @@
 //  ESPxxTime Edited by 3tawi
 //  ESPxxTime Library: https://github.com/3tawi/ESPxxTime
-//  Find All "Great Projects" Videos : https://www.youtube.com/c/GreatProjects
+//  Lien vidéo: https://youtu.be/_o3kPfuHsdk
 
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
